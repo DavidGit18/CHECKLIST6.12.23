@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+
+    </head>
+    <body>
+        <h1>KRUH</h1>
+        <canvas id="myCanvas" width="200" height="200" style="border:1px solid #d3d3d3;"></canvas>
+        <script>
+             var canvas = document.getElementById("myCanvas");
+  var context = canvas.getContext("2d");
+
+  // Zde předpokládám, že data budou předávána při renderování stránky jako objekt 'data'
+  var radius = <%= data && data.radius !== undefined ? data.radius : 50 %>;
+  var length = <%= data && data.length !== undefined ? data.length : 100 %>;
+
+  // Vykreslit kruh
+  context.beginPath();
+  context.arc(canvas.width / 2, canvas.height / 2, radius, 0, 2 * Math.PI, false);
+  context.fillStyle = "black";
+  context.fill();
+  context.lineWidth = 5;
+  context.strokeStyle = "black";
+  context.stroke();
+
+  // Vykreslit čáru
+  context.beginPath();
+  context.moveTo(canvas.width / 2, canvas.height / 2);
+  context.lineTo(canvas.width / 2 + length, canvas.height / 2); // Zde můžeš upravit směr a délku čáry
+  context.lineWidth = 5;
+  context.stroke();
+        </script>
+
+    </body>
+</html>
